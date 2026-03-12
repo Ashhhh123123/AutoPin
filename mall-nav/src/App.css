@@ -1,38 +1,60 @@
+:root {
+  --bg-dark: #020617;
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --accent-cyan: #06b6d4;
+  --border-light: rgba(255, 255, 255, 0.1);
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-dark);
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Flexible Map Area */
+.map-container {
+  flex: 1 1 auto;
+  width: 100%;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Clean Dashboard Overlay */
+.dashboard {
+  flex: 0 0 auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  border-radius: 2rem 2rem 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  z-index: 100;
+  box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Scalable Radar Element */
+.radar-circle {
+  width: clamp(80px, 25vw, 120px);
+  height: clamp(80px, 25vw, 120px);
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-cyan);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Ensure buttons take full width on small screens */
+.pin-button {
+  width: 100%;
+  max-width: 320px;
+  padding: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
