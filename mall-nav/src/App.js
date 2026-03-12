@@ -3,7 +3,7 @@
     import io from 'socket.io-client';
     import 'maplibre-gl/dist/maplibre-gl.css';
 
-    const socket = io('http://localhost:3001');
+    const socket = io('https://autopin-backend.onrender.com');
 
     const getNavUpdates = (lat1, lon1, lat2, lon2) => {
         const R = 6371e3; 
@@ -38,7 +38,7 @@
             try {
                 showToast("Ringing! Pick up to save your spot. 📱", "success"); 
                 
-                const response = await fetch('http://localhost:3001/trigger-call', { method: 'POST' });
+               const response = await fetch('https://autopin-backend.onrender.com/trigger-call', { method: 'POST' });
                 
                 if (!response.ok) {
                     showToast("Oops, the call didn't go through.", "error");
@@ -85,7 +85,7 @@
 
             const watchId = navigator.geolocation.watchPosition((pos) => {
                 const { latitude, longitude } = pos.coords;
-                fetch('http://localhost:3001/update-gps', {
+                fetch('https://autopin-backend.onrender.com/update-gps', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ lat: latitude, lng: longitude })
