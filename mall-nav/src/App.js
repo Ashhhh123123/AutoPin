@@ -177,15 +177,15 @@ export default function App() {
     const isArrived = navData.car && navData.dist < 5;
     const themeColor = isArrived ? '#4ade80' : '#00e5ff';
 
-   return (
-        // Changed 100vh to 100dvh so it dynamically resizes on mobile
+return (
         <div style={{ height: '100dvh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
             {toast && <div style={{ position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, background: 'rgba(15,23,42,0.9)', padding: '12px 24px', borderRadius: '50px', color: '#fff', border: `1px solid ${themeColor}`, backdropFilter: 'blur(10px)', fontWeight: 'bold' }}>{toast.message}</div>}
             
-          <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', boxSizing: 'border-box', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
+            {/* 1. I put your map container back! */}
+            <div ref={mapContainer} style={{ height: '100%', width: '100%' }} />
             
-            {/* Added calc(40px + env(safe-area-inset-bottom)) to push it up from the system navigation bar */}
-            <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
+            {/* 2. Here is the single, perfectly formatted bottom panel */}
+            <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', boxSizing: 'border-box', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '30px', width: '100%', justifyContent: 'center' }}>
                     <div style={{ 
                         width: '80px', height: '80px', 
