@@ -183,7 +183,7 @@ export default function App() {
             
             <div ref={mapContainer} style={{ height: '100%', width: '100%' }} />
             
-            <div style={{ position: 'absolute', bottom: 'max(30px, env(safe-area-inset-bottom, 30px))', left: '5%', width: '90%', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: 'clamp(16px, 5vw, 24px)', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)', maxHeight: '40vh', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', bottom: 'max(50px, env(safe-area-inset-bottom, 50px))', left: '50%', transform: 'translateX(-50%)', width: 'clamp(280px, 90%, 420px)', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: 'clamp(16px, 5vw, 24px)', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)', maxHeight: '40vh', overflow: 'hidden' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(20px, 8vw, 30px)', width: '100%', justifyContent: 'center' }}>
                     <div style={{ 
                         width: 'clamp(60px, 15vw, 80px)', height: 'clamp(60px, 15vw, 80px)', 
