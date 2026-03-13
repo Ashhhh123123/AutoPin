@@ -177,16 +177,18 @@ export default function App() {
     const isArrived = navData.car && navData.dist < 5;
     const themeColor = isArrived ? '#4ade80' : '#00e5ff';
 
-    return (
-        <div style={{ height: '100vh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
+   return (
+        // Changed 100vh to 100dvh so it dynamically resizes on mobile
+        <div style={{ height: '100dvh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
             {toast && <div style={{ position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, background: 'rgba(15,23,42,0.9)', padding: '12px 24px', borderRadius: '50px', color: '#fff', border: `1px solid ${themeColor}`, backdropFilter: 'blur(10px)', fontWeight: 'bold' }}>{toast.message}</div>}
             
             <div ref={mapContainer} style={{ height: '100%', width: '100%' }} />
             
-            <div style={{ position: 'absolute', bottom: 'max(50px, env(safe-area-inset-bottom, 50px))', left: '50%', transform: 'translateX(-50%)', width: 'clamp(280px, 90%, 420px)', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: 'clamp(16px, 5vw, 24px)', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)', maxHeight: '40vh', overflow: 'hidden' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(20px, 8vw, 30px)', width: '100%', justifyContent: 'center' }}>
+            {/* Added calc(40px + env(safe-area-inset-bottom)) to push it up from the system navigation bar */}
+            <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '30px', width: '100%', justifyContent: 'center' }}>
                     <div style={{ 
-                        width: 'clamp(60px, 15vw, 80px)', height: 'clamp(60px, 15vw, 80px)', 
+                        width: '80px', height: '80px', 
                         transform: `rotate(${relativeArrowRotation}deg)`, 
                         transition: 'transform 0.3s ease-out', 
                         filter: `drop-shadow(0 0 10px ${themeColor})` 
@@ -194,15 +196,15 @@ export default function App() {
                         <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" fill={themeColor}/></svg>
                     </div>
                     <div style={{ color: '#fff', display: 'flex', alignItems: 'baseline' }}>
-                        <span style={{ fontSize: 'clamp(2.5rem, 10vw, 4.5rem)', fontWeight: '900', letterSpacing: '-2px' }}>{navData.dist}</span>
-                        <span style={{ fontSize: 'clamp(1rem, 4vw, 1.5rem)', color: themeColor, fontWeight: 'bold', marginLeft: '5px' }}>m</span>
+                        <span style={{ fontSize: '4.5rem', fontWeight: '900', letterSpacing: '-2px' }}>{navData.dist}</span>
+                        <span style={{ fontSize: '1.5rem', color: themeColor, fontWeight: 'bold', marginLeft: '5px' }}>m</span>
                     </div>
                 </div>
                 
                 <button 
                     onClick={handleCallTrigger} 
-                    style={{ width: '100%', marginTop: 'clamp(15px, 4vw, 25px)', padding: 'clamp(12px, 4vw, 18px)', borderRadius: '16px', background: themeColor, border: 'none', fontWeight: '900', color: '#020617', letterSpacing: '1px', textTransform: 'uppercase', fontSize: 'clamp(0.8rem, 3vw, 1rem)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {navData.car ? `RETURN TO ${navData.pillar}` : 'PIN LOCATION'}
+                    style={{ width: '100%', marginTop: '25px', padding: '18px', borderRadius: '16px', background: themeColor, border: 'none', fontWeight: '900', color: '#020617', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    {navData.car ? `RETURN TO ${navData.pillar}` : 'TAP TO PIN LOCATION'}
                 </button>
             </div>
         </div>
