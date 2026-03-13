@@ -182,7 +182,7 @@ export default function App() {
         <div style={{ height: '100dvh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
             {toast && <div style={{ position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, background: 'rgba(15,23,42,0.9)', padding: '12px 24px', borderRadius: '50px', color: '#fff', border: `1px solid ${themeColor}`, backdropFilter: 'blur(10px)', fontWeight: 'bold' }}>{toast.message}</div>}
             
-            <div ref={mapContainer} style={{ height: '100%', width: '100%' }} />
+          <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', boxSizing: 'border-box', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
             
             {/* Added calc(40px + env(safe-area-inset-bottom)) to push it up from the system navigation bar */}
             <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
