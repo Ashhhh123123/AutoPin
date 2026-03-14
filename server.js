@@ -17,7 +17,7 @@ const USER_PHONE = '+918319431235';
 
 let lastKnownLocation = { lat: 28.6139, lng: 77.2090 };
 
-// Updates user's current GPS coordinates
+//  user's current GPS coordinates
 app.post('/update-gps', (req, res) => {
     const { lat, lng } = req.body;
     if (lat && lng) {
@@ -26,7 +26,7 @@ app.post('/update-gps', (req, res) => {
     res.sendStatus(200);
 });
 
-// Initiates Bolna AI outbound call
+// Bolna AI outbound call
 app.post('/trigger-call', async (req, res) => {
     try {
         const response = await axios.post('https://api.bolna.ai/call', {

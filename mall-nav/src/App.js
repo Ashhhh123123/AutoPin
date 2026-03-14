@@ -5,7 +5,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 const socket = io('https://autopin-backend.onrender.com');
 
-// Replace with your ORS Key for walking paths
+// ORS Key for walking paths
 const ORS_API_KEY = 'eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjI1MDg5OGUxMTIyYjRkNTM4ZGE2ZmYxMDZhOTAwZmRjIiwiaCI6Im11cm11cjY0In0=';
 
 const getNavUpdates = (lat1, lon1, lat2, lon2) => {
@@ -35,7 +35,7 @@ export default function App() {
         setTimeout(() => setToast(null), 3500); 
     };
 
-    // --- FETCH WALKING PATH FROM ORS ---
+    // --- FETCH WALKING PATH FROM ORS --
     const updateWalkingPath = async (userCoords, carCoords) => {
         if (!userCoords || !carCoords || !map.current) return;
 
@@ -91,7 +91,7 @@ export default function App() {
     };
 
     useEffect(() => {
-        // --- HYBRID COMPASS LOGIC ---
+        // HYBRID COMPASS LOGIC 
         const handleOrientation = (e) => {
             let compass = null;
             if (e.webkitCompassHeading) {
@@ -120,14 +120,14 @@ export default function App() {
             pitch: 60
         });
 
-        // Laptop Fallback: Use map rotation if hardware compass is 0
+        // Laptop Fallback:  map rotation if hardware compass is 0
         map.current.on('rotate', () => {
             if (heading === 0) {
                 setHeading(map.current.getBearing());
             }
         });
 
-        // MOBILE GPS FIX: added maximumAge: 0 to force real-time updates
+        // MOBILE GPS maximumAge: 0 to force real-time updates
         const watchId = navigator.geolocation.watchPosition((pos) => {
             const { latitude, longitude } = pos.coords;
             
@@ -178,11 +178,35 @@ export default function App() {
     const themeColor = isArrived ? '#4ade80' : '#00e5ff';
 
 return (
-        <div style={{ height: '100dvh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
+<div style={{ height: '100dvh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
             
-            {/* 🌟 NEW: AutoPin Logo added to the top left */}
-            <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10, background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(10px)', padding: '10px 20px', borderRadius: '12px', border: '1px solid rgba(0,229,255,0.3)', color: '#fff', fontWeight: '900', fontSize: '1.2rem', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
-                <span style={{ fontSize: '1.4rem' }}>📍</span> Auto<span style={{ color: '#00e5ff' }}>Pin</span>
+            {/* 🛰️  LOGO Style*/}
+            <div style={{ 
+                position: 'absolute', 
+                top: '20px', 
+                left: '20px', 
+                zIndex: 100, 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px',
+                padding: '8px 20px',
+                background: 'rgba(15, 23, 42, 0.6)', 
+                backdropFilter: 'blur(12px)', 
+                borderRadius: '100px', 
+                border: '1.5px solid rgba(0, 229, 255, 0.5)', 
+                boxShadow: '0 0 20px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.1)',
+            }}>
+                {/* Neon Cyan Icon */}
+                <div style={{ 
+                    width: '12px', 
+                    height: '12px', 
+                    backgroundColor: '#00e5ff', 
+                    borderRadius: '50%',
+                    boxShadow: '0 0 12px #00e5ff'
+                }} />
+                <span style={{ color: '#fff', fontWeight: '900', fontSize: '1rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                    Auto<span style={{ color: '#00e5ff' }}>Pin</span>
+                </span>
             </div>
 
             {toast && <div style={{ position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, background: 'rgba(15,23,42,0.9)', padding: '12px 24px', borderRadius: '50px', color: '#fff', border: `1px solid ${themeColor}`, backdropFilter: 'blur(10px)', fontWeight: 'bold' }}>{toast.message}</div>}
