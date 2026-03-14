@@ -179,12 +179,18 @@ export default function App() {
 
 return (
         <div style={{ height: '100dvh', width: '100vw', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
+            
+            {/* 🌟 NEW: AutoPin Logo added to the top left */}
+            <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10, background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(10px)', padding: '10px 20px', borderRadius: '12px', border: '1px solid rgba(0,229,255,0.3)', color: '#fff', fontWeight: '900', fontSize: '1.2rem', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+                <span style={{ fontSize: '1.4rem' }}>📍</span> Auto<span style={{ color: '#00e5ff' }}>Pin</span>
+            </div>
+
             {toast && <div style={{ position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, background: 'rgba(15,23,42,0.9)', padding: '12px 24px', borderRadius: '50px', color: '#fff', border: `1px solid ${themeColor}`, backdropFilter: 'blur(10px)', fontWeight: 'bold' }}>{toast.message}</div>}
             
-            {/* 1. I put your map container back! */}
+            {/* Map Container */}
             <div ref={mapContainer} style={{ height: '100%', width: '100%' }} />
             
-            {/* 2. Here is the single, perfectly formatted bottom panel */}
+            {/* Bottom Panel */}
             <div style={{ position: 'absolute', bottom: 'calc(40px + env(safe-area-inset-bottom))', left: '5%', width: '90%', boxSizing: 'border-box', background: 'rgba(15,23,42,0.9)', backdropFilter: 'blur(20px)', borderRadius: '32px', padding: '24px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '30px', width: '100%', justifyContent: 'center' }}>
                     <div style={{ 
